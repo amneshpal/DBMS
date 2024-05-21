@@ -1,0 +1,2296 @@
+Database --> 
+database is the colletion of data, in a formate that can easily accessed.
+
+Operations: --->
+1 Insert 
+2 Select 
+3 Update 
+4 Delete 
+
+-- use for comments in sql console.
+
+
+Setup the database for a particular site -
+
+Get the database dump and import in mysql in Shell of XAMPP via SOURCE command -
+mysql -u root
+create database pp_mx;
+use Amnesh;  -  database me jane ke liye 
+
+show tables like "%student%";
+select * from student where  father_name like "%c_pal%";
+
+DESC student_class;  structure  puri table 
+
+Update :
+UPDATE `stu_result` SET `roll_num` = '2' WHERE `stu_result`.`result_id` = 2;
+
+
+show tables like "%student%"; --- table find karne ke liye
+SELECT *from Customers order by Country desc;
+SELECT *from Customers order by Country asc;
+SELECT *from Customers order by customerId asc limit 2;
+SELECT DISTINCT Country FROM Customers;
+
+
+SELECT *from Customers limit 4;
+SELECT *from Customers  where CustomerID < 5;
+SELECT DISTINCT Country FROM Customers Order BY Country DESC limit 5;
+mysql - 
+
+
+SQL (Structured Query Language )---->   sql query likhne ke liye is language ka use karte h 
+ Standerd Language for database creation and manipulation. 
+
+ DBMS (Data base management system ) --->
+Software/tool that use to manage data. 
+  
+1) NoSql  --- unstructured data
+2) Relational data base (RDBMS)   ---  table form   EX -  mysql, Oracle , Sql server 
+
+
+Data types --> refer to the format of data. 
+
+
+for writing query --->    no case sensetiv language  uppercase or lowel case dono me likh  sakte h 
+Mysql / xampp (Download)
+
+
+in chrome write down  local host and click on the php my admin 
+
+ka
+1 Create :
+
+in sql 
+
+create database databasename; 
+Ex:  create Database  mydb; 
+
+
+2 Delete :
+drop database databasename; 
+drop database mydb; 
+
+
+Create table : first we want to make database then create table 
+
+create table tablename(
+    name, datatype
+    father_name, datatype
+    city, datatype
+    date_of_birth datatype
+
+)
+
+Example: 
+CREATE TABLE Student(
+    name varchar(255),
+    father_name varchar(255),
+    city varchar(222),
+    date_of_birth date
+
+)
+
+
+
+Rename table :  
+RENAME TABLE old name  to new name 
+RENAME TABLE student to class_student 
+
+
+Delete table :
+
+drop table tablename; 
+drop table student; 
+
+
+
+alter table ------------> table ke ander ke content ko change karne ke liye. 
+ALTER table table name  add what you want to add 
+ALTER table class_student add class_name
+
+table ke ander ke content ko delete karne ke liye--------->
+ALTER table class_student DROP class_name
+
+Alter ke sath modify  --->  
+
+ALTER TABLE class_student MODIFY COLUMN city varchar(255);
+
+
+COLUMN ki position change karne ke liye--------->
+
+ALTER TABLE class_student MODIFIES COLUMN  date_of_birth date AFTER father_name;
+
+new COLUMN add karna kisi colum ke bad --------->
+ALTER TABLE class_student ADD COLUMN mother_name  varchar(255) AFTER father_name
+
+
+
+change: 
+SELECT * FROM `student_class` WHERE city_nmae = " delhi" OR city_nmae = "mumbai" OR city_nmae= "jaipur";
+
+Insert --->   table me data enter karne ke liye 
+INSERT INTO class_student (name , father_name, mother_name, date_of_birth, city) VALUES("Amnesh", "chintamani ", "santosh", "2002-07-25", "modinagr " );
+
+sequens kuchh bhi ho sakta h colum ka makesure VALUES usi sequence me honi chahiye  
+
+when we want many columns 
+INSERT INTO class_student(name, father_name, mother_name, date_of_birth, city )
+VALUES("Amnesh", "chintamani", "Santosh" , 2002-07-20, "Modinagar"),
+("Ayush", "chintamani", "fwrw" , 2002-07-20, "Modinagar"),
+("Amnesh", "chinta", "ddv" , 2002-07-20, "Modinagar"),
+("rajeev", "chi", "fvfebfd" , 2002-07-20, "Modinagar"),
+("vikash", "mani", "xvdsvsd" , 2002-07-20, "Modinagar")
+
+
+how to delete column-------->
+
+
+
+Table :- 
+
+Student_id	student_name	Father_name  	Marks	dob      	city_nmae	
+1           jatin kumar      mahesh kumar   78    1997-09-10    Jaipur
+2           Rakesh            Manoj         59    1998-10-10    Bikaner
+3           John              Smith         52    1998-06-11    delhi
+4           Joy               don           68    1998-01-10    Delhi
+5           Rohan singh      Ritesh singh   49    1997-10-12    Mumbai
+5           Yogesh Pareek    Kamal Pareek   90    2002-07-01    Mumbai
+
+Select: ---------> select data in table
+SELECT * FROM class_student  ---> fetch all table data 
+
+fetch limited column----->
+SELECT name, father_name FROM class_student; 
+
+fetch data all data thwough student_Id ----->
+SELECT * FROM class_student WHERE name = "Amnesh";
+
+
+unke marks nikalne h jinke 70 se jada h.
+Select student_nmae from student marks> 70
+
+
+
+And / or / note operator -------->
+
+
+And ----> all codition truth 
+
+find student jo delhi se ho or unke markes 60 se uper host
+SELECT * FROM `student_class` WHERE city_nmae = "Delhi" AND Marks > 60;
+
+SELECT * FROM `student_class` WHERE city_nmae = "Delhi" AND Marks > 60; AND (agar 3 condition ho to and laga ke likh sakte h ase hi 4thi ka bhi)
+
+
+
+OR ---> koi bhi ak condition truth honi chahiy.
+
+Q find a student jo delhi ya mumbai se ate ho
+
+SELECT * FROM `student_class` WHERE city_nmae = " delhi" OR city_nmae = "mumbai"OR city_nmae= "jaipur";
+SELECT * FROM `student_class` WHERE city_name = "Delhi" OR city_name ="mumbai" OR city_name = "jaipur";
+
+Q find jaipur or mumbai student but marks greater then 60;
+
+SELECT * FROM `student_class` WHERE city_name = "jaipur" OR city_name = "mumbai" AND Marks > 50;
+
+
+Not:
+m sari city ka data dekhna chahata hu but delhi ka data nahi dekhna chahta.
+
+SELECT * FROM `student_class` WHERE NOT city_name =  "delhi";
+
+
+Update:  existing data me change 
+
+Q )add second name in student name jha student id 2 h ;
+UPDATE student_class  SET student_name = "Rakesh pal" , Father_name = "manoj pal" WHERE Student_id= 2
+
+Q)delhi me jis bache ki student id 3 h uske num badha do;
+UPDATE student_class SET Marks = "70 " WHERE Student_id = "3" AND city_name = "delhi"
+
+
+
+Delete :------>
+
+Delete from student_class - pura data khali 
+
+
+Q use data ko delete kar do jha student id 1 h 
+Delete from student_class  WHERE student_Id = 1
+
+Q use data ko delete kar do jha city mame bikaner ya mumbai ho
+
+where * from student_class where city_name = 'bikaner'  or city_name = 'mumbai';
+
+
+
+
+
+
+
+
+
+
+
+
+Php          Mern         Python              dsa
+                    
+Laravel     mongodb        python              dsa 
+sql         node           django              Apttitude
+php         react        html, css,js          os 
+                                               Dbms 
+
+
+Constrant :
+ * primary key; 
+
+
+select sum(student_id) from  student_Id
+
+ MariaDB [(none)]> mysql -u root;
+MariaDB [(none)]> use mydb;
+Database changed
+
+MariaDB [mydb]> create table results(result_Id int PRIMARY KEY, marks float (5,2));
+Query OK, 0 rows affected (0.114 sec)
+
+MariaDB [mydb]> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_student  |
+| results        |
+| student_class  |
++----------------+
+3 rows in set (0.002 sec)
+
+
+MariaDB [mydb]> desc results;
++-----------+------------+------+-----+---------+-------+
+| Field     | Type       | Null | Key | Default | Extra |
++-----------+------------+------+-----+---------+-------+
+| result_Id | int(11)    | NO   | PRI | NULL    |       |
+| marks     | float(5,2) | YES  |     | NULL    |       |
++-----------+------------+------+-----+---------+-------+
+2 rows in set (0.103 sec)
+
+
+
+INsert the value :------------>
+MariaDB [mydb]> INSERT INTO results (result_id , marks) VALUES ("1", "66");
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [mydb]> select *from results;
++-----------+-------+
+| result_Id | marks |
++-----------+-------+
+|         1 | 66.00 |
++-----------+-------+
+1 row in set (0.001 sec)
+
+Insert the nul value :---------->
+
+MariaDB [mydb]> INSERT INTO results (result_id , marks) VALUES ("NULL", "40");
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+
+MariaDB [mydb]> select *from results;
++-----------+-------+
+| result_Id | marks |
++-----------+-------+
+|         0 | 40.00 |
+|         1 | 66.00 |
++-----------+-------+
+2 rows in set (0.002 sec)  
+
+
+
+
+Primary key : ------>  Primary key not be NUL and dublicate 
+
+MariaDB [mydb]>  create table stu_result(result_id INT PRIMARY KEY  , marks float(5,2));
+Query OK, 0 rows affected (0.120 sec)
+
+MariaDB [mydb]> insert into stu_result(result_id , marks) value(NULL, 66);
+ERROR 1048 (23000): Column 'result_id' cannot be null
+
+Can't dublicate : ------------>
+
+Primary key not be NUL and dublicate 
+MariaDB [mydb]> INSERT INTO stu_result(result_id , marks) VALUES ("2", "40");
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mydb]> INSERT INTO stu_result(result_id , marks) VALUES ("2", "40");
+ERROR 1062 (23000): Duplicate entry '2' for key 'PRIMARY'
+
+
+
+Existing table me primary key set karna ; 
+
+
+
+MariaDB [mydb]> update stu_result set roll_num = 2 where result_id = 2;
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+MariaDB [mydb]> select *from  stu_result;
++-----------+-------+----------+
+| result_id | marks | roll_num |
++-----------+-------+----------+
+|         0 |  NULL |        1 |
+|         2 | 40.00 |        2 |
++-----------+-------+----------+
+2 rows in set (0.001 sec)
+
+MariaDB [mydb]> update stu_result set   result_id = 1  where roll_num =
+2;
+Query OK, 1 row affected (0.019 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [mydb]> select *from  stu_result;
++-----------+-------+----------+
+| result_id | marks | roll_num |
++-----------+-------+----------+
+|         0 |  NULL |        1 |
+|         1 | 40.00 |        2 |
++-----------+-------+----------+
+2 rows in set (0.001 sec)
+
+
+
+
+Set primary key  in existing table------------------>
+
+MariaDB [mydb]> alter table student_class ADD CONSTRAINT PRIMARY KEY (st
+udent_id);
+Query OK, 0 rows affected (0.948 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [mydb]> insert student_class (student_id) value ("5");
+ERROR 1062 (23000): Duplicate entry '5' for key 'PRIMARY'
+MariaDB [mydb]> select * from student_class
+    -> ;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+
+Auto Increment in primary key : ------------------->
+
+MariaDB [mydb]> CREATE TABLE payments(Payment_id INT PRIMARY KEY AUTO_IN
+CREMENT, amount decimal(10,2));
+Query OK, 0 rows affected (1.676 sec)
+
+MariaDB [mydb]> Insert into payments(amount) values(2000);
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [mydb]> select *from payment;
+ERROR 1146 (42S02): Table 'mydb.payment' doesn't exist
+MariaDB [mydb]> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_student  |
+| payments       |
+| results        |
+| stu_result     |
+| student_class  |
++----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select *from payments;
++------------+---------+
+| Payment_id | amount  |
++------------+---------+
+|          1 | 2000.00 |
++------------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [mydb]> insert into payment(amount)values (5000);
+ERROR 1146 (42S02): Table 'mydb.payment' doesn't exist
+MariaDB [mydb]> insert into payments(amount)values (5000);
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mydb]> select *from payments;
++------------+---------+
+| Payment_id | amount  |
++------------+---------+
+|          1 | 2000.00 |
+|          2 | 5000.00 |
++------------+---------+
+2 rows in set (0.002 sec)
+
+
+NULL/NOT NULL ---------------->
+
+MariaDB [mydb]> create table employee(emp_id int primary key auto_increment, first_name varchar(55)not null, last_name varchar(255) null);
+Query OK, 0 rows affected (4.374 sec)
+MariaDB [mydb]> select *from employee;
+Empty set (0.117 sec)
+
+MariaDB [mydb]> desc employee;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| emp_id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(55)  | NO   |     | NULL    |                |
+| last_name  | varchar(255) | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.411 sec)
+
+MariaDB [mydb]> ALTER TABLE employee ADD COLUMN sarlay varchar(255) not null AFTER last_name;
+Query OK, 0 rows affected (0.042 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [mydb]> desc employee;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| emp_id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(55)  | NO   |     | NULL    |                |
+| last_name  | varchar(255) | YES  |     | NULL    |                |
+| sarlay     | varchar(255) | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.131 sec)
+
+MariaDB [mydb]> insert into employee (first_name, last_name, sarlay) VAL
+UES (NULL , "kumar", NULL);
+ERROR 1048 (23000): Column 'first_name' cannot be null
+
+MariaDB [mydb]> insert into employee (first_name, last_name, sarlay) VAL
+UES ("AMNESH" , "kumar", 25000);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [mydb]> desc employee;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| emp_id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| first_name | varchar(55)  | NO   |     | NULL    |                |
+| last_name  | varchar(255) | YES  |     | NULL    |                |
+| sarlay     | varchar(255) | NO   |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.278 sec)
+
+MariaDB [mydb]> select *from employee;
++--------+------------+-----------+--------+
+| emp_id | first_name | last_name | sarlay |
++--------+------------+-----------+--------+
+|      1 | AMNESH     | kumar     | 25000  |
++--------+------------+-----------+--------+
+1 row in set (0.001 sec)
+
+
+
+existing table me null ?not null------------>
+MariaDB [mydb]> ALTER TABLE payment MODIFY amount float (10,2) NOT NULL;
+
+ERROR 1146 (42S02): Table 'mydb.payment' doesn't exist
+MariaDB [mydb]> ALTER TABLE payments MODIFY amount float (10,2) NOT NULL
+;
+Query OK, 2 rows affected (0.278 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [mydb]> desc payments;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| Payment_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| amount     | float(10,2) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.700 sec)
+
+MariaDB [mydb]> insert into payments (amount) VALUES (25000);
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [mydb]> insert into payments (amount) VALUES (NULL);
+ERROR 1048 (23000): Column 'amount' cannot be null
+MariaDB [mydb]>
+
+
+Defoult CONSTRAINT :---------------->
+
+
+MariaDB [mydb]> create table users(user_id int PRIMARY KEY AUTO_INCREMENT,full_name Varchar(50) NOT NULL, status enum('active','inactive','bloocked')DEFAULT 'inactive');
+Query OK, 0 rows affected (0.104 sec)
+
+MariaDB [mydb]> Insert into user (full_name) values ('jatin');
+ERROR 1146 (42S02): Table 'mydb.user' doesn't exist
+MariaDB [mydb]> Insert into users (full_name) values ('jatin');
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [mydb]> select *from users;
++---------+-----------+----------+
+| user_id | full_name | status   |
++---------+-----------+----------+
+|       1 | jatin     | inactive |
++---------+-----------+----------+
+1 row in set (0.002 sec)
+
+MariaDB [mydb]> Insert into users (full_name, status) values ('jatin',"active");
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [mydb]> select *from users;
++---------+-----------+----------+
+| user_id | full_name | status   |
++---------+-----------+----------+
+|       1 | jatin     | inactive |
+|       2 | jatin     | active   |
++---------+-----------+----------+
+2 rows in set (0.001 sec)
+
+
+
+foreign key-------------------> 2 table ko interlink karne ke liye. 
+
+foreign key is a field / collection of field in one table,
+that referes to the primary key in another table. 
+
+
+Foreign key ---- > child table
+primary key ---- > parent/reference table. 
+
+
+             Table :  Orders
+                                            foreign Key 
+                                                 ^
+                                                 |
++------------+----------------+--------------+-----------------+
+| Order_id   |  Product       | Total        |      Customer_Id| 
++------------+----------------+--------------+-----------------+
+| 1          | Rakesh pal     | manoj pal    | 59              | 
+| 2          | John           | Smith        | 70              | 
+| 3          | Joy            | don          | 68              | 
+| 4          | Rohan singh    | Ritesh singh | 49              | 
+| 5          | Yogesh Pareek  | Kamal Pareek | 90              | 
++------------+----------------+--------------+------------------
+                                                     ^
+                                                     |
+        _____________________________________________|
+       |           table : Customers            
++------------+----------------+--------------+----------------------------+
+| id         |  first_name    | last_name    |       age       |          |
++------------+----------------+--------------+----------------------------+
+| 2          | Rakesh pal     | manoj pal    | 59              | usa      |
+| 3          | John           | Smith        | 70              | usa      |
+| 4          | Joy            | don          | 68              | uk       |
+| 5          | Rohan singh    | Ritesh singh | 49              | uk       |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90              | UAE      |
++------------+----------------+--------------+-----------------------------
+
+customer table ki jo primary key h use orders table me store kar do.
+
+NOTE : primary key me null store nahi hota h forign key me null store hota h.
+
+
+
+
+MariaDB [mydb]> create table orders(order_id int PRIMARY KEY AUTO_INCREMENT, 
+order_number int NOT NULL, 
+total_amount float(10,2),
+user_id int,
+CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES USERS (user_id));
+Query OK, 0 rows affected (0.585 sec)                        |
+                                                     new table 
+              
+                                 
+                                         OR
+
+MariaDB [mydb]> create table try(order_id  int primary key AUTO_INCREMENT, order_number int NOT NULL , total_amount float (10,2), u_id int , CON
+STRAINT fk_user_id FOREIGN KEY (u_id) REFERENCES USERS(user_id));
+Query OK, 0 rows affected (1.519 sec)
+
+
+MariaDB [mydb]> INSERT INTO orders (order_number, total_amount, user_id)VALUES ("3434","500","2");
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [mydb]> INSERT INTO orders (order_number, total_amount, user_id)VALUES ("3234","300","1");
+Query OK, 1 row affected (0.093 sec)
+MariaDB [mydb]> select *from orders;
++----------+--------------+--------------+---------+
+| order_id | order_number | total_amount | user_id |
++----------+--------------+--------------+---------+
+|        1 |         3434 |       500.00 |       2 |
+|        2 |         3234 |       300.00 |       1 |
++----------+--------------+--------------+---------+
+
+
+user id(foreign key) ka data delete nahi ho sakta link karne ke bad dusri table se.
+agar fir bhi delete karna ho  to uski query .
+
+
+MariaDB [mydb]> alter table orders
+                drop foreign key fk_user_id;
+Query OK, 0 rows affected (0.139 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [mydb]> delete from users where user_id =2;
+Query OK, 1 row affected (0.009 sec)
+
+
+Existing table me constraint ---------->
+Using alter table: -------------------->
+
+MariaDB [mydb]> desc payments ;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| Payment_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| amount     | float(10,2) | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.941 sec)
+
+MariaDB [mydb]> desc orders ;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| order_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| order_number | int(11)     | NO   |     | NULL    |                |
+| total_amount | float(10,2) | YES  |     | NULL    |                |
+| user_id      | int(11)     | YES  | MUL | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.940 sec)
+
+MariaDB [mydb]> alter table orders add foreign key(user_id) references p
+ayments(payment_id);
+Query OK, 2 rows affected (0.517 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [mydb]> desc orders;
++--------------+-------------+------+-----+---------+----------------+
+| Field        | Type        | Null | Key | Default | Extra          |
++--------------+-------------+------+-----+---------+----------------+
+| order_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| order_number | int(11)     | NO   |     | NULL    |                |
+| total_amount | float(10,2) | YES  |     | NULL    |                |
+| user_id      | int(11)     | YES  | MUL | NULL    |                |
++--------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.528 sec)
+
+
+jha MUL ---  ata h vaha forign key hoti h. 
+
+
+Joints ----------------> use to combine rows bt two and more table.
+
+INNER JOIN: Returns records that have matching values in both tables
+LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
+CROSS JOIN: Returns all records from both tables
+
+UPDATE `payments` SET `stu_id` = '1' WHERE `payments`.`Payment_id` = 1; UPDATE `payments` SET `stu_id` = '2' WHERE `payments`.`Payment_id` = 2; UPDATE `payments` SET `stu_id` = '3' WHERE `payments`.`Payment_id` = 3;
+
+Inner Join -----> payment se student vali table me jayega 
+
+
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+
+
+
+MariaDB [mydb]> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_student  |
+| employee       |
+| orders         |
+| payments       |
+| results        |
+| stu_result     |
+| student_class  |
+| try            |
+| users          |
++----------------+
+9 rows in set (0.002 sec)
+
+MariaDB [mydb]> desc payments;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| Payment_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| amount     | float(10,2) | NO   |     | NULL    |                |
+| stu_id     | int(11)     | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.306 sec)
+
+MariaDB [mydb]> desc student_class ;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Student_id   | varchar(25) | NO   | PRI | NULL    |       |
+| student_name | varchar(25) | YES  |     | NULL    |       |
+| Father_name  | varchar(25) | YES  |     | NULL    |       |
+| Marks        | varchar(25) | YES  |     | NULL    |       |
+| dob          | date        | YES  |     | NULL    |       |
+| city_name    | varchar(25) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.112 sec)
+
+
+MariaDB [mydb]> SELECT * FROM payments INNER JOIN student_class ON payments.stu_id = student_class. student_id;
++------------+----------+--------+------------+--------------+-------------+-------+------------+-----------+
+| Payment_id | amount   | stu_id | Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+----------+--------+------------+--------------+-------------+-------+------------+-----------+
+|          2 |  5000.00 |      2 | 2          | Rakesh pal   | manoj pal   | 59    | 1998-10-10 | Bikaner   |
+|          3 | 25000.00 |      3 | 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
++------------+----------+--------+------------+--------------+-------------+-------+------------+-----------+
+2 rows in set (0.001 sec)
+
+MariaDB [mydb]> select *from payments;
++------------+----------+--------+
+| Payment_id | amount   | stu_id |
++------------+----------+--------+
+|          1 |  2000.00 |      1 |
+|          2 |  5000.00 |      2 |
+|          3 | 25000.00 |      3 |
++------------+----------+--------+
+3 rows in set (0.001 sec)
+
+MariaDB [mydb]> select *from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.002 sec)
+
+   
+
+when we want selective column; 
+
+tablename.columnname ----> dublicate 
+
+MariaDB [mydb]> select student_class.student_name, student_class.father_
+name, payments.amount from payments inner join student_class ON payments
+.stu_id = student_class.student_id;
++--------------+-------------+----------+
+| student_name | father_name | amount   |
++--------------+-------------+----------+
+| Rakesh pal   | manoj pal   |  5000.00 |
+| John         | Smith       | 25000.00 |
++--------------+-------------+----------+
+2 rows in set (0.002 sec)
+
+
+
+LEft join -------> 
+
+MariaDB [mydb]> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_student  |
+| employee       |
+| orders         |
+| payments       |
+| results        |
+| stu_result     |
+| student_class  |
+| try            |
+| users          |
++----------------+
+9 rows in set (0.002 sec)
+
+MariaDB [mydb]> desc payments ;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| Payment_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| amount     | float(10,2) | NO   |     | NULL    |                |
+| stu_id     | int(11)     | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.116 sec)
+
+MariaDB [mydb]> desc student_class;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Student_id   | varchar(25) | NO   | PRI | NULL    |       |
+| student_name | varchar(25) | YES  |     | NULL    |       |
+| Father_name  | varchar(25) | YES  |     | NULL    |       |
+| Marks        | varchar(25) | YES  |     | NULL    |       |
+| dob          | date        | YES  |     | NULL    |       |
+| city_name    | varchar(25) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.110 sec)
+
+MariaDB [mydb]> select student_class.student_id , student_class.student_
+name , payments.amount from payments left join student_class on payments.stu_id = student_class.student_id;
++------------+--------------+----------+
+| student_id | student_name | amount   |
++------------+--------------+----------+
+| NULL       | NULL         |  2000.00 |
+| 2          | Rakesh pal   |  5000.00 |
+| 3          | John         | 25000.00 |
++------------+--------------+----------+
+3 rows in set (0.003 sec)
+
+MariaDB [mydb]> select *from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+
+MariaDB [mydb]> select* from  payments;
++------------+----------+--------+
+| Payment_id | amount   | stu_id |
++------------+----------+--------+
+|          1 |  2000.00 |      1 |
+|          2 |  5000.00 |      2 |
+|          3 | 25000.00 |      3 |
++------------+----------+--------+
+3 rows in set (0.001 sec)
+
+
+
+MariaDB [mydb]> select student_class.student_id , student_class.student_name , payments.amount from payments left join student_class on payments.payment_id = student_class.student_id;
++------------+--------------+----------+
+| student_id | student_name | amount   |
++------------+--------------+----------+
+| NULL       | NULL         |  2000.00 |
+| 2          | Rakesh pal   |  5000.00 |
+| 3          | John         | 25000.00 |
++------------+--------------+----------+
+3 rows in set (0.001 sec)
+
+
+
+
+Right join ----- > 
+
+
+MariaDB [mydb]> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| class_student  |
+| employee       |
+| orders         |
+| payments       |
+| results        |
+| stu_result     |
+| student_class  |
+| try            |
+| users          |
++----------------+
+9 rows in set (0.001 sec)
+
+MariaDB [mydb]> desc student_class ;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Student_id   | varchar(25) | NO   | PRI | NULL    |       |
+| student_name | varchar(25) | YES  |     | NULL    |       |
+| Father_name  | varchar(25) | YES  |     | NULL    |       |
+| Marks        | varchar(25) | YES  |     | NULL    |       |
+| dob          | date        | YES  |     | NULL    |       |
+| city_name    | varchar(25) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.111 sec)
+
+MariaDB [mydb]> desc payments;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| Payment_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| amount     | float(10,2) | NO   |     | NULL    |                |
+| stu_id     | int(11)     | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.103 sec)
+
+MariaDB [mydb]> select *from payments;
++------------+----------+--------+
+| Payment_id | amount   | stu_id |
++------------+----------+--------+
+|          1 |  2000.00 |      1 |
+|          2 |  5000.00 |      2 |
+|          3 | 25000.00 |      3 |
++------------+----------+--------+
+3 rows in set (0.001 sec)
+
+MariaDB [mydb]> select *from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select student_class.student_id , student_class.student_name , payments.amount from payments right join student_class on payments.payment_id = student
+_class.student_id;
++------------+----------------+----------+
+| student_id | student_name   | amount   |
++------------+----------------+----------+
+| 2          | Rakesh pal     |  5000.00 |
+| 3          | John           | 25000.00 |
+| 4          | Joy            |     NULL |
+| 5          | Rohan singh    |     NULL |
+| 6          | Yogesh Pareek  |     NULL |
++------------+----------------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select student_class.student_id , student_class.student_name , payments.amount from payments right join student_class on payments.stu_id = student_cla
+ss.student_id;
++------------+----------------+----------+
+| student_id | student_name   | amount   |
++------------+----------------+----------+
+| 2          | Rakesh pal     |  5000.00 |
+| 3          | John           | 25000.00 |
+| 4          | Joy            |     NULL |
+| 5          | Rohan singh    |     NULL |
+| 6          | Yogesh Pareek  |     NULL |
++------------+----------------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]>
+
+
+Note :   without constraint we can join. only want to match relation. 
+
+
+Aliases :  --- >  provide temparary name  to column and tables. 
+
+
+MariaDB [mydb]> select student_class.student_id as S_I , student_class.student_name as S_N , payments.amount as S_A from payments right join student_class on payments
+.stu_id = student_class.student_id;
++-----+----------------+----------+
+| S_I | S_N            | S_A      |
++-----+----------------+----------+
+| 2   | Rakesh pal     |  5000.00 |
+| 3   | John           | 25000.00 |
+| 4   | Joy            |     NULL |
+| 5   | Rohan singh    |     NULL |
+| 6   | Yogesh Pareek  |     NULL |
++-----+----------------+----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]>
+
+
+
+IN / bitween operator------> 
+
+
+In operator :   -----> we can use  IN operator replasement of multiple OR. 
+
+The IN operator is a shorthand for multiple OR conditions. 
+MariaDB [mydb]> desc student_class;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Student_id   | varchar(25) | NO   | PRI | NULL    |       |
+| student_name | varchar(25) | YES  |     | NULL    |       |
+| Father_name  | varchar(25) | YES  |     | NULL    |       |
+| Marks        | varchar(25) | YES  |     | NULL    |       |
+| dob          | date        | YES  |     | NULL    |       |
+| city_name    | varchar(25) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.111 sec)
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select * from student_class where student_name IN('Rakesh pal', 'joy', 'john');
++------------+--------------+-------------+-------+------------+-----------+
+| Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+--------------+-------------+-------+------------+-----------+
+| 2          | Rakesh pal   | manoj pal   | 59    | 1998-10-10 | Bikaner   |
+| 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don         | 68    | 1998-01-10 | Delhi     |
++------------+--------------+-------------+-------+------------+-----------+
+3 rows in set (0.001 sec)
+
+
+
+NOT in ------> reverse of in operator: 
+
+MariaDB [mydb]> select * from student_class where student_name NOT IN('Rakesh pal', 'joy', 'john');
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+2 rows in set (0.001 sec)
+
+
+
+
+Between ----------------> 
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+MariaDB [mydb]> select * from student_class where student_id between 2 and 4;
++------------+--------------+-------------+-------+------------+-----------+
+| Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+--------------+-------------+-------+------------+-----------+
+| 2          | Rakesh pal   | manoj pal   | 59    | 1998-10-10 | Bikaner   |
+| 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don         | 68    | 1998-01-10 | Delhi     |
++------------+--------------+-------------+-------+------------+-----------+
+3 rows in set (0.067 sec)
+
+
+
+funcation of mysql :   ---->
+
+Min /Max / count / avg/ sum
+
+
+
+Min ------>
+
+MariaDB [mydb]> select * from payments;
++------------+----------+--------+
+| Payment_id | amount   | stu_id |
++------------+----------+--------+
+|          1 |  2000.00 |      1 |
+|          2 |  5000.00 |      2 |
+|          3 | 25000.00 |      3 |
++------------+----------+--------+
+3 rows in set (0.006 sec)
+
+MariaDB [mydb]> select min(amount) from payments;
++-------------+
+| min(amount) |
++-------------+
+|     2000.00 |
++-------------+
+1 row in set (0.005 sec)
+
+
+
+
+MAx ---->
+MariaDB [mydb]> select max(amount) from payments;
++-------------+
+| max(amount) |
++-------------+
+|    25000.00 |
++-------------+
+1 row in set (0.001 sec)
+
+
+
+Count ---- >  no of rows count---->
+MariaDB [mydb]> select count(payment_id) from payments;
++-------------------+
+| count(payment_id) |
++-------------------+
+|                 3 |
++-------------------+
+
+MariaDB [mydb]> select avg(payment_id) from payments;
++-----------------+
+| avg(payment_id) |
++-----------------+
+|          2.0000 |
++-----------------+
+
+
+MariaDB [mydb]> select sum(amount) from payments;
++-------------+
+| sum(amount) |
++-------------+
+|    32000.00 |
++-------------+
+
+
+whild card ----->
+A wildcard character is used to substitute one or more characters in a string.
+used with like operator. 
+
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+
+MariaDB [mydb]> select * from student_class where student_name like '%a%';
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+3 rows in set (0.001 sec)
+
+
+%	Represents zero or more characters
+_	Represents a single character
+[]	Represents any single character within the brackets *
+^	Represents any character not in the brackets *
+-	Represents any single character within the specified range *
+{}	Represents any escaped character **
+
+ sql pe jna koi problem ho to 
+
+fine user jinke man ka second lettr ya to a ho ya o ho. 
+
+
+
+
+order by ----------> use to arrange data in asending and desending order. 
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select * from student_class order by student_id desc ;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+
+
+59 % se uper marks chahiye disending order me ; 
+
+MariaDB [mydb]> select * from student_class order by student_id desc ;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select * from student_class where marks > 70 order by marks desc ;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+1 row in set, 1 warning (0.091 sec)
+
+MariaDB [mydb]> select * from student_class where marks > 59 order by marks desc ;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
++------------+----------------+--------------+-------+------------+-----------+
+3 rows in set, 1 warning (0.001 sec)
+
+
+
+that is used to grouping the rows.
+Group by  -------> 
+
+
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+
+data ki grouping ke liye.that  statement groups rows
+ex :  find the number of customers in each country".
+group by often use with aggregate funcation -- count, max, min, sum , avg.
+
+
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.002 sec)
+
+MariaDB [mydb]> select count(student_id) as total_student , city_name from student_class group
+ by city_name;
++---------------+-----------+
+| total_student | city_name |
++---------------+-----------+
+|             1 | Bikaner   |
+|             2 | delhi     |
+|             2 | Mumbai    |
++---------------+-----------+
+3 rows in set (0.010 sec)
+
+
+
+group by not clear till now----->
+
+
+Limmit :---------------------->
+ak bar me kitna data set karna h 
+specify the number of records to return.
+
+
+
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.002 sec)
+
+
+MariaDB [mydb]> select * from student_class limit 4 ;
++------------+--------------+--------------+-------+------------+-----------+
+| Student_id | student_name | Father_name  | Marks | dob        | city_name |
++------------+--------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal   | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John         | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh  | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
++------------+--------------+--------------+-------+------------+-----------+
+4 rows in set (0.001 sec)
+
+
+MariaDB [mydb]> select * from student_class where city_name = 'delhi' limit 2 ;
++------------+--------------+-------------+-------+------------+-----------+
+| Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+--------------+-------------+-------+------------+-----------+
+| 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don         | 68    | 1998-01-10 | Delhi     |
++------------+--------------+-------------+-------+------------+-----------+
+2 rows in set (0.001 sec)
+
+
+order by ----->   limit sabse bad me lagti h 
+
+MariaDB [mydb]> select * from student_class order by student_id  limit 4;
++------------+--------------+--------------+-------+------------+-----------+
+| Student_id | student_name | Father_name  | Marks | dob        | city_name |
++------------+--------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal   | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John         | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh  | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
++------------+--------------+--------------+-------+------------+-----------+
+4 rows in set (0.001 sec)
+
+
+
+that is skip the row: {0,2 / 1,2 }-------->
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.001 sec)
+
+MariaDB [mydb]> select * from student_class limit 0,2;
++------------+--------------+-------------+-------+------------+-----------+
+| Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+--------------+-------------+-------+------------+-----------+
+| 2          | Rakesh pal   | manoj pal   | 59    | 1998-10-10 | Bikaner   |
+| 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
++------------+--------------+-------------+-------+------------+-----------+
+2 rows in set (0.001 sec)
+
+MariaDB [mydb]> select * from student_class limit 1,2;
++------------+--------------+-------------+-------+------------+-----------+
+| Student_id | student_name | Father_name | Marks | dob        | city_name |
++------------+--------------+-------------+-------+------------+-----------+
+| 3          | John         | Smith       | 70    | 1998-06-11 | delhi     |
+| 4          | Joy          | don         | 68    | 1998-01-10 | Delhi     |
++------------+--------------+-------------+-------+------------+-----------+
+2 rows in set (0.001 sec)
+
+
+sub querys :---------->
+
+ak query me dusri query likhna.
+
+ query within another query. 
+
+ MariaDB [mydb]> select * from payments;
++------------+----------+--------+
+| Payment_id | amount   | stu_id |
++------------+----------+--------+
+|          1 |  2000.00 |      1 |
+|          2 |  5000.00 |      2 |
+|          3 | 25000.00 |      3 |
++------------+----------+--------+
+3 rows in set (0.004 sec)
+
+MariaDB [mydb]> select stu_id from payments where stu_id IS NOT NULL;
++--------+
+| stu_id |
++--------+
+|      1 |
+|      2 |
+|      3 |
++--------+
+3 rows in set (0.001 sec)
+
+
+
+
+
+
+union operator ----> use to combaine tow and more query.
+
+must be same data type/column name   and num of column must be same . 
+
+UNION must have the same number of columns
+The columns must also have similar data types
+The columns in every SELECT statement must also be in the same order
+
+
+
+
+elow is a selection from the "Customers" table:
+
+CustomerID	CustomerName	                    ContactName	    Address                          	City	       PostalCode	Country
+1           Alfreds Futterkiste	                 Maria Anders	Obere Str. 57                      	Berlin        	12209	    Germany
+2	        Ana Trujillo Emparedados y helados	 Ana Trujillo	Avda. de la Constitución 2222	    México D.F.	    05021	    Mexico
+3	        Antonio Moreno Taquería	             Antonio Moreno	Mataderos 2312                  	México D.F.	    05023	    MexicoAnd 
+
+
+a selection from the "Suppliers" table:
+
+
+
+SupplierID	  SupplierName	               ContactName	      Address	         City       PostalCode  	Country
+1	          Exotic Liquid	               Charlotte Cooper   49 Gilbert St.	London	       EC1 4SD  	UK
+2	          New Orleans Cajun Delights   Shelley Burke	  P.O. Box 78934	New Orleans	   70117	    USA
+3	          Grandma Kelly's Homestead	   Regina Murphy	  707 Oxford Rd.	Ann Arbor	   48104	    USA
+
+
+
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+
+Number of Records: 94 
+City
+Aachen 
+Albuquerque 
+Anchorage 
+Ann Arbor 
+Annecy 
+Århus 
+Barcelona 
+Barquisimeto 
+Bend 
+Bergamo 
+Berlin 
+Bern 
+Boise 
+Boston 
+Bräcke 
+Brandenburg 
+.
+.
+.
+
+
+
+
+
+truncate table : ------------> 
+
+delete :
+MariaDB [mydb]> select *from orders;
++----------+--------------+--------------+---------+
+| order_id | order_number | total_amount | user_id |
++----------+--------------+--------------+---------+
+|        1 |         3434 |       500.00 |       2 |
+|        2 |         3234 |       300.00 |       1 |
++----------+--------------+--------------+---------+
+2 rows in set (0.002 sec)
+
+MariaDB [mydb]> delete from orders where order_id = 1 or order_id = 2;
+Query OK, 2 rows affected (0.027 sec)
+
+MariaDB [mydb]> select *from orders;
+Empty set (0.001 sec)
+	order_id	order_number	total_amount	user_id	
+
+INSERT INTO `orders` (`order_id`, `order_number`, `total_amount`, `user_id`) VALUES (NULL, '2323', '544.00', '2');
+
+MariaDB [mydb]> select *from orders;
++----------+--------------+--------------+---------+
+| order_id | order_number | total_amount | user_id |
++----------+--------------+--------------+---------+
+|        4 |         2323 |       544.00 |       2 |
++----------+--------------+--------------+---------+
+
+
+NOTE :  delete karne per primary key(order_id ) vahi se start hogi jha se last record delete kara tha. 
+
+
+Now truncate  : 
+
+MariaDB [mydb]> truncate orders;
+Query OK, 0 rows affected (0.215 sec)
+
+MariaDB [mydb]>
+
+	order_id	order_number	total_amount	user_id	
+
+    INSERT INTO `orders` (`order_id`, `order_number`, `total_amount`, `user_id`) VALUES (NULL, '2323', '544.00', '2');
+                                                                                               or 
+                                                                                        (NULL, '2323', '544.00', '2');
+select *from orders;
++----------+--------------+--------------+---------+
+| order_id | order_number | total_amount | user_id |
++----------+--------------+--------------+---------+
+|        1 |          121 |       142.00 |       2 |
++----------+--------------+--------------+---------+                                                                                     
+
+primary key 1 se start hogi 
+
+one more time read. 
+
+
+VIEW -------------------------> 
+
+MariaDB [mydb]> select * from student_class;
++------------+----------------+--------------+-------+------------+-----------+
+| Student_id | student_name   | Father_name  | Marks | dob        | city_name |
++------------+----------------+--------------+-------+------------+-----------+
+| 2          | Rakesh pal     | manoj pal    | 59    | 1998-10-10 | Bikaner   |
+| 3          | John           | Smith        | 70    | 1998-06-11 | delhi     |
+| 4          | Joy            | don          | 68    | 1998-01-10 | Delhi     |
+| 5          | Rohan singh    | Ritesh singh | 49    | 1997-10-12 | Mumbai    |
+| 6          | Yogesh Pareek  | Kamal Pareek | 90    | 2002-07-01 | Mumbai    |
++------------+----------------+--------------+-------+------------+-----------+
+5 rows in set (0.132 sec)
+
+MariaDB [mydb]> create view mark as select student_name , father_name from student_class where marks > 50 ;
+Query OK, 0 rows affected (0.198 sec)
+
+MariaDB [mydb]> select * from mark;
++----------------+--------------+
+| student_name   | father_name  |
++----------------+--------------+
+| Rakesh pal     | manoj pal    |
+| John           | Smith        |
+| Joy            | don          |
+| Yogesh Pareek  | Kamal Pareek |
++----------------+--------------+
+4 rows in set, 1 warning (0.025 sec)
+
+MariaDB [mydb]> create view mark2 as select student_name , father_name from student_class where marks > 70 ;
+Query OK, 0 rows affected (0.047 sec)
+
+MariaDB [mydb]> select * from mark2;
++----------------+--------------+
+| student_name   | father_name  |
++----------------+--------------+
+| Yogesh Pareek  | Kamal Pareek |
++----------------+--------------+
+1 row in set, 1 warning (0.002 sec)
+
+
+
+
+
+
+
+transaction control ---------------->
+
+auto commit 
+rollback
+commit 
+savepoint
+
+commit -----> it is use to store data temporery file the server.
+
+MariaDB [mydb]> create table transaction(name varchar(25), rank varchar(25) , best varchar(25));
+Query OK, 0 rows affected (2.477 sec)
+
+MariaDB [mydb]> insert into transaction values("amnesh", 1,2);
+Query OK, 1 row affected (0.062 sec)
+
+MariaDB [mydb]> insert into transaction values("abhishek ", 2,3);
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
++-----------+------+------+
+2 rows in set (0.040 sec)
+
+
+
+
+
+
+when we off our computer then ------------->
+
+MariaDB [mydb]> select * from transaction;
+no row selected; 
+
+MariaDB [mydb]> commit;
+Query OK, 0 rows affected (0.003 sec)
+
+
+ab vo data system off karne per bhi mil jayega-------->
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
++-----------+------+------+
+2 rows in set (0.040 sec)
+
+
+
+
+
+
+ROLLBACK-------------->
+
+one step back; just like undo .
+
+MariaDB [mydb]> rollback;
+Query OK, 0 rows affected (0.000 sec)
+
+
+Note ---> jab hm commit operation use karte h to rolleback use nah hota.
+
+
+MariaDB [mydb]> insert into transaction values("aman ", 3,4);
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+3 rows in set (0.002 sec)
+
+
+agar muje ak step piche jana h then 
+
+MariaDB [mydb]> update transaction set name = "kohli" where rank = 1;
+Query OK, 1 row affected (0.048 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| kohli     | 1    | 2    |
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+4 rows in set (0.001 sec)
+
+
+MariaDB [mydb]> rollback;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+3 rows in set (0.002 sec)
+
+
+
+MariaDB [mydb]> delete from transaction where rank= 1;
+Query OK, 1 row affected (0.109 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+4 rows in set (0.001 sec)
+
+MariaDB [mydb]> rollback;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+4 rows in set (0.001 sec)
+
+MariaDB [mydb]> rollback;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| amnesh    | 1    | 2    |
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
++-----------+------+------+
+4 rows in set (0.001 sec)
+
+
+
+
+savepoint--------->
+
+ariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
+| abhishek  | 2    | 3    |
+| abhishek  | 2    | 3    |
++-----------+------+------+
+4 rows in set (0.001 sec)
+
+MariaDB [mydb]> savepoint A;
+Query OK, 0 rows affected (0.005 sec)
+
+MariaDB [mydb]> insert into transaction values("arvind", 2,3);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [mydb]> insert into transaction values("arun", 2,3);
+Query OK, 1 row affected (0.027 sec)
+
+MariaDB [mydb]> insert into transaction values("schin", 2,3);
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [mydb]> savepoint b;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [mydb]> insert into transaction values("rahane ", 2,3);
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [mydb]> savepoint c;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [mydb]> select * from transaction;
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
+| abhishek  | 2    | 3    |
+| abhishek  | 2    | 3    |
+| arvind    | 2    | 3    |
+| arun      | 2    | 3    |
+| schin     | 2    | 3    |
+| rahane    | 2    | 3    |
++-----------+------+------+
+8 rows in set (0.002 sec)
+
+MariaDB [mydb]> rollback to a;
+
+
++-----------+------+------+
+| name      | rank | best |
++-----------+------+------+
+| abhishek  | 2    | 3    |
+| aman      | 3    | 4    |
+| abhishek  | 2    | 3    |
+| abhishek  | 2    | 3    |
+| arvind    | 2    | 3    |
+| arun      | 2    | 3    |
+| schin     | 2    | 3    |
++-----------+------+------+
+
+
+
+subquery ------> 
+
+
+To display NAME, LOCATION, PHONE_NUMBER of 
+the students from DATABASE table whose section is A.
+
+
+MariaDB [mydb]> select *from table1;
++---------+---------+-------------+------------+
+| name    | roll_no | location    | phone_num  |
++---------+---------+-------------+------------+
+| ram     | 101     | chennai     | 99         |
+| raj     | 102     | coimbatore  | 8877665544 |
+| sasi    | 103     | madurai     | 7766553344 |
+| ravi    | 104     | salem       | 7766553344 |
+| sumathi | 105     | kanchipuram | 7766553344 |
++---------+---------+-------------+------------+
+5 rows in set (0.015 sec)
+
+MariaDB [mydb]> select *from table2;
++---------+---------+---------+
+| name    | roll_no | section |
++---------+---------+---------+
+| Ravi    | 104     | A       |
+| Sumathi | 105     | B       |
+| Raj     | 102     | A       |
++---------+---------+---------+
+3 rows in set (0.008 sec)
+
+MariaDB [mydb]> select name , location , phone_num from table1 
+where roll_no in (select roll_no from table2 where section= "a");
++------+------------+------------+
+| name | location   | phone_num  |
++------+------------+------------+
+| raj  | coimbatore | 8877665544 |
+| ravi | salem      | 7766553344 |
++------+------------+------------+
+2 rows in set (0.036 sec)
+
+Exist  if returen row true 
+Exist  if returen row fales true
+
+
+
+Triggers  -------------->
+
+stored program which are automaticaly fire when event occur. 
+
+create trigger salary_difference
+before insert or delete or update on emp1
+for each rowdeclare salary_difference number;
+begin 
+salary_difference:= :new.salary - :old.salary;
+dbms_output.put_line('old salary:' || :old.salary);
+dbms_output.put_line('new salary:' || :new.salary);
+dbms_output.put_line('salary difference:' || :salary_difference);
+end;
+
+
+
+
+
+
+
+mongo db  ---------------->
+
+db ---- current db; 
+show dbs ---- view all data base 
+use  -   switch / open / creat data base;
+db.dropdatabase()---->  drop database (delete )
+> show dbs
+admin   0.000GB
+amnesh  0.000GB
+config  0.000GB
+local   0.000GB
+> use testing
+switched to db testing
+> show dbs
+admin   0.000GB
+amnesh  0.000GB
+config  0.000GB
+local   0.000GB
+> 
+testing
+>
+> db.dropDatabase()
+{ "ok" : 1 }
+>
+
+
+> cls ----- clear screen ;
+
+
+
+
+Collection operation in mongodb----------->(just like table ) 
+
+show collection ---- >  view all collection 
+
+create collection------->
+
+> db.createCollection("student ")
+{ "ok" : 1 }
+
+> show collections
+student
+>
+
+Delete collection ------>
+> db.student.drop();
+true 
+
+
+
+
+Document operation in mongoDB---->
+
+
+Insert Document in collection -------> one by one data insert ke liye 
+
+key---- field 
+value ---data.
+
+db.<collection_name > insert({
+    "key":"value"
+})
+
+
+> db.student.insert(
+... {
+... name: "Amnesh",
+... course: "bca"
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+
+
+Bhotsara data ak sath insert karane ke liye.
+
+Inserting many documents:
+
+db.<collection_nmae>.insertMany([
+    {},
+    {}
+])
+
+
+db.student.insertMany([
+    {Name: "Amnesh",
+     second_name: "pal",
+     course: "java ",
+     class: "mca "
+    },
+    {Name: "Abhinesh",
+     course: "python ",
+     class: "mca "},
+
+    {Name: "Abhishek",
+     second_name: "pal",
+     course: "c++ ",
+     class: "mca "}
+    ])
+
+
+data ko find karne ke liye------>
+
+
+> db.student.find()
+{ "_id" : ObjectId("6645f1f34bf65bc113d43a40"), "name" : "amnesh", "course" : "bca " }
+{ "_id" : ObjectId("6645f5344bf65bc113d43a41"), "Name" : "Amnesh", "second_name" : "pal", "course" : "java ", "class" : "mca " }
+{ "_id" : ObjectId("6645f5344bf65bc113d43a42"), "Name" : "Abhinesh", "course" : "python ", "class" : "mca " }
+{ "_id" : ObjectId("6645f5344bf65bc113d43a43"), "Name" : "Abhishek", "second_name" : "pal", "course" : "c++ ", "class" : "mca " }
+{ "_id" : ObjectId("6645f58a4bf65bc113d43a44"), "Name" : "Amnesh", "second_name" : "pal", "course" : "java ", "class" : "mca " }
+{ "_id" : ObjectId("6645f58a4bf65bc113d43a45"), "Name" : "Abhinesh", "course" : "python ", "class" : "mca " }
+{ "_id" : ObjectId("6645f58a4bf65bc113d43a46"), "Name" : "Abhishek", "second_name" : "pal", "course" : "c++ ", "class" : "mca " }
+
+
+
+> db.student.find().pretty();    --- funcation achhe formate me convert kar deta 
+{
+        "_id" : ObjectId("6645f1f34bf65bc113d43a40"),
+        "name" : "amnesh",
+        "course" : "bca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a41"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a42"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a43"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a44"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a45"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a46"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+>
+
+
+Search for  a documents; --  doesnt work right now try again 
+
+db.<collection_name>find(
+    {
+        key: value 
+    }
+)
+
+> db.student.find({course:"c++"}); 
+
+{ "_id" : ObjectId("6645f1f34bf65bc113d43a40"), "name" : "amnesh", "course" : "bca " }
+
+> db.student.find({name:"python",name : "amnesh"}).pretty();
+{
+        "_id" : ObjectId("6645f1f34bf65bc113d43a40"),
+        "name" : "amnesh",
+        "course" : "bca "
+}
+
+
+Limmit ----- > 
+> db.student.find().pretty().limit(2);
+{
+        "_id" : ObjectId("6645f1f34bf65bc113d43a40"),
+        "name" : "amnesh",
+        "course" : "bca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a41"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+>
+
+
+Count ----- >  total column ;
+> db.student.find().count();
+7
+
+
+shorting the colletion:----------------------->
+
+
+
+db.student.find().sort({key:1})
+
+1 : Ascending ,      -1 : Descending 
+> db.student.find().sort({course : 1}).pretty();
+{
+        "_id" : ObjectId("6645f1f34bf65bc113d43a40"),
+        "name" : "amnesh",
+        "course" : "bca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a43"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a46"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a41"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a44"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a42"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a45"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+
+new date()----------> 
+
+> db.student.insert(
+... {
+... name: "pal",
+... age: 12,
+... course: "c",
+... date: new Date()
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+>
+
+
+Updating the document:----------------------------->
+
+db.<collection_name>.updateOne(
+    {search},
+    {$set:{update object}}
+    {upsert:boolean}
+)
+
+upsert:  ----  me false by defoult set hota h .
+upsert: Create the record if it does not exist.
+
+jab record nahi hota h to new record bana det h 
+
+> db.student.insert(
+... {
+... name: "pal",
+... age: 12,
+... course: "c",
+... date: new Date()
+... }
+... )
+
+> db.student.updateOne(
+... {
+... name: "pal",
+... },
+... {
+... $set:{
+... age: 32
+... }
+... }
+... )
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+>
+> db.student.find().pretty();
+{
+        "_id" : ObjectId("6645f1f34bf65bc113d43a40"),
+        "name" : "amnesh",
+        "course" : "bca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a41"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a42"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f5344bf65bc113d43a43"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a44"),
+        "Name" : "Amnesh",
+        "second_name" : "pal",
+        "course" : "java ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a45"),
+        "Name" : "Abhinesh",
+        "course" : "python ",
+        "class" : "mca "
+}
+{
+        "_id" : ObjectId("6645f58a4bf65bc113d43a46"),
+        "Name" : "Abhishek",
+        "second_name" : "pal",
+        "course" : "c++ ",
+        "class" : "mca "
+}
+{ "_id" : ObjectId("6646070b4bf65bc113d43a47") }
+{
+        "_id" : ObjectId("664607604bf65bc113d43a48"),
+        "name" : "pal",
+        "age" : 32,
+        "course" : "c",
+        "date" : ISODate("2024-05-16T13:17:20.425Z")
+}
+{
+        "_id" : ObjectId("66460b404bf65bc113d43a49"),
+        "name" : "pal",
+        "age" : 12,
+        "course" : "c",
+        "date" : ISODate("2024-05-16T13:33:52.276Z")
+}
+>
+
+upsert: Create the record if it does not exist.
+jab record nahi hota h to new record bana det h.
+
+> db.student.updateOne( { name : "Abhi", }, { $set:{  age : "40" } }, { upsert : true  } )
+{
+        "acknowledged" : true,
+        "matchedCount" : 0,
+        "modifiedCount" : 0,
+        "upsertedId" : ObjectId("66460ebe9c1a51fc562bcca2")
+}
+
+
+
+update operators: -------------> google it 
+
+$rename 
+$$inc
+
+Delete document
+
+db.<collection_name>.remove({search})
+
+
+remane --------->
+
+> db.student.updateOne({name : "pal"},
+... {$rename: {age: "ageInyear"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+>
+
+
+
+Increment ---> 
+
+age me inc 
+
+> db.student.updateOne({name : "pal"}, {$inc: {age: 3}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+>
+
+
+Inc / dec funcation not working ----->
+ 
+
+
+> db.createCollection("Info");
+{ "ok" : 1 }
+> show collections
+Info
+student
+> db.Info.insert(
+... {
+... name : "Akash",
+... second_name : "kumar",
+... age :65,
+... course: "java",
+... class: "b.come"
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+> db.info.updateOne({name: "Akash"},{$inc:{age: 4}});
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.info.updateOne({name: "Akash"},{$inc:{age: -4}});
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+>
+
+
+Remove operation ----->
+
+> db.student.remove({name : "Abhi"});
+WriteResult({ "nRemoved" : 1 })
+>
